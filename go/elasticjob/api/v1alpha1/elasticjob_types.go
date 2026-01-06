@@ -25,6 +25,14 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
+// +kubebuilder:resource:shortName=ej;elasticjobs
+// +kubebuilder:printcolumn:name="Phase",type="string",JSONPath=".status.phase"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+
 // ElasticJobSpec defines the desired state of ElasticJob
 type ElasticJobSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
@@ -100,6 +108,8 @@ type ElasticJobStatus struct {
 	Phase commonv1.JobConditionType `json:"phase,omitempty"`
 }
 
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 // +resource:path=elasticjob
@@ -116,6 +126,8 @@ type ElasticJob struct {
 	Status ElasticJobStatus `json:"status,omitempty"`
 }
 
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 //+kubebuilder:object:root=true
 
 // ElasticJobList contains a list of ElasticJob
