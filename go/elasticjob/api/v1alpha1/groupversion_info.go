@@ -30,6 +30,9 @@ var (
 	// GroupVersion is group version used to register these objects
 	GroupVersion = schema.GroupVersion{Group: "elastic.iml.github.io", Version: "v1alpha1"}
 
+	// 建议加上这行，方便某些版本的生成器识别
+  SchemeGroupVersion = GroupVersion
+
 	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
 	SchemeBuilder = &scheme.Builder{GroupVersion: GroupVersion}
 
@@ -39,21 +42,4 @@ var (
 	// SchemeGroupVersionKind is the gvk of ElasticJob
 	SchemeGroupVersionKind = GroupVersion.WithKind("ElasticJob")
 )
-
-// Adds the list of known types to Scheme.
-func addKnownTypes(scheme *runtime.Scheme) error {
-    scheme.AddKnownTypes(scheme.GroupVersion,
-        &ElasticJob{},
-        &ElasticJobList{},
-        &ScalePlan{},
-        &ScalePlanList{},
-    )
-    metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
-    return nil
-}
-
-// Resource takes an unqualified resource and returns a Group qualified GroupResource
-func Resource(resource string) schema.GroupResource {
-    return scheme.GroupVersion.WithResource(resource).GroupResource()
-}
 

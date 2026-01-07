@@ -21,7 +21,7 @@ import (
 	"net/http"
 
 	"github.com/intelligent-machine-learning/dlrover/go/elasticjob/client/clientset/versioned/scheme"
-	v1alpha1 "github.com/intelligent-machine-learning/dlrover/go/elasticjob/pkg/apis/elastic/v1alpha1"
+	v1alpha1 "github.com/intelligent-machine-learning/dlrover/go/elasticjob/api/v1alpha1"
 	rest "k8s.io/client-go/rest"
 )
 
